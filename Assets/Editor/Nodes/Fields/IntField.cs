@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+[System.Serializable]
 public class IntField : AbstractField
 {
     public new int value;
-    public IntField(BaseNode owner, string name, int initValue, FieldType fieldType, bool drawField = true) : base(owner,name, fieldType, drawField)
+    public IntField(BaseNode owner, string name, int initValue, FieldType fieldType, bool drawField = true, IsFieldShaderVariable isShaderVariable = IsFieldShaderVariable.Yes) : base(owner,name, fieldType, drawField,isShaderVariable)
     {
         value = initValue;
-
+        base.value = value;
     }
     public override void Show()
     {
@@ -24,6 +25,7 @@ public class IntField : AbstractField
         {
             EditorGUILayout.DelayedIntField(name, value);
         }
+        base.value = value;
         base.Show();
     }
 }

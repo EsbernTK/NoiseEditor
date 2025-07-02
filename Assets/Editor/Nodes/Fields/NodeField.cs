@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using UnityEditor;
+[System.Serializable]
 public class NodeField : AbstractField {
 
     public new BaseNode value;
-    public NodeField(BaseNode owner, string name = "Node", FieldType type = FieldType.Input) : base(owner, name, type)
+    public NodeField(BaseNode owner, string name = "Node", FieldType type = FieldType.Input, IsFieldShaderVariable isShaderVariable  = IsFieldShaderVariable.Yes) : base(owner, name, type,true,isShaderVariable)
     {
 
     }

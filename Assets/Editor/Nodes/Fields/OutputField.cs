@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+[System.Serializable]
 public class OutputField : AbstractField {
     Color fieldColor;
     public OutputField(BaseNode owner, Color fieldColor, string name = "Output") : base(owner,name,FieldType.Output)

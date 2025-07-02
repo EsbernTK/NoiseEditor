@@ -1,11 +1,12 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
+[System.Serializable]
 public class Vector3IntField : AbstractField
 {
     public new Vector3Int value;
     bool foldedOut;
-    public Vector3IntField(BaseNode owner, string name, Vector3Int initValue, FieldType fieldType, bool drawField = true) : base(owner,name, fieldType, drawField)
+    public Vector3IntField(BaseNode owner, string name, Vector3Int initValue, FieldType fieldType, bool drawField = true, IsFieldShaderVariable isShaderVariable = IsFieldShaderVariable.Yes) : base(owner,name, fieldType, drawField,isShaderVariable)
     {
 
         value = initValue;

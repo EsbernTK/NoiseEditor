@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+[System.Serializable]
 public class Vector2IntField : AbstractField
 {
     public new Vector2Int value;
     bool foldedOut;
-    public Vector2IntField(BaseNode owner, string name, Vector2Int initValue, FieldType fieldType, bool drawField = true) : base(owner,name, fieldType, drawField)
+    public Vector2IntField(BaseNode owner, string name, Vector2Int initValue, FieldType fieldType, bool drawField = true, IsFieldShaderVariable isShaderVariable = IsFieldShaderVariable.Yes) : base(owner,name, fieldType, drawField,isShaderVariable)
     {
 
-        value = initValue;
+        this.value = initValue;
+        base.value = value;
 
     }
     public override void Show(Vector2 position)
@@ -57,7 +59,12 @@ public class Vector2IntField : AbstractField
         {
             EditorGUILayout.Vector2IntField(name, value);
         }
+        base.value = value;
         base.Show();
+    }
+    public override string GetOutputFormat()
+    {
+        return "int2" + base.GetOutputFormat();
     }
 }
 
